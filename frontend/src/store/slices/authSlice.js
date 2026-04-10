@@ -5,6 +5,10 @@ export const registerUser = createAsyncThunk('auth/register', async (userData, {
   try {
     const response = await api.post('/auth/register', userData)
     return response.data
+    // ADD THIS LINE:
+   if (response.data.token) {
+      localStorage.setItem('token', response.data.token); // SAVE HERE
+    }
   } catch (error) {
     return rejectWithValue(error.response.data.message)
   }
@@ -15,6 +19,10 @@ export const loginUser = createAsyncThunk('auth/login', async (credentials, { re
     const response = await api.post('/auth/login', credentials)
     localStorage.setItem('token', response.data.token)
     return response.data
+    if (response.data.token) {
+      localStorage.setItem('token', response.data.token); // SAVE HERE
+    }
+    
   } catch (error) {
     return rejectWithValue(error.response.data.message)
   }
