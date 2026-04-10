@@ -11,7 +11,7 @@
 
 const api = axios.create({ 
   // Change this to your ACTUAL backend URL
-  baseURL: 'http://localhost:3000/api' 
+  baseURL: import.meta.env.VITE_API_URL|| 'http://localhost:3000/api' 
 })
 
 api.interceptors.request.use((config) => {

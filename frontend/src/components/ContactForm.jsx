@@ -17,7 +17,7 @@ function ContactForm({ onClose }) {
   // If editing — pre-fill form with existing contact data
   useEffect(() => {
     if (currentContact) {
-      // setValue('name', currentContact.name)
+       setValue('name', currentContact.name)
       setValue('email', currentContact.email)
       setValue('phone', currentContact.phone)
     }
